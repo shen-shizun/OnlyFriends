@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnlyFriends</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Comic Sans MS', 'Poppins', sans-serif;
+            background-image: url('./assets/bubblesBG.jpg');
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: auto;
+            min-height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            background: #fff8fb;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .friend-image {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .letter h1 {
+            color: #6bc5d1;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .letter p {
+            color: #444;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .signature {
+            margin-top: 30px;
+            margin-bottom: -10px;
+            font-style: italic;
+        }
+
+        .menu {
+            margin-block: 20px;
+        }
+
+        .menu a {
+            background-color: white;
+            border-radius: 20px;
+            padding: 10px 20px;
+            color: #6bc5d1;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .menu a#logout:hover {
+            background-color: rgb(202, 84, 84);
+            color: white;
+        }
+
+        .menu a#quiz:hover {
+            background-color: rgb(99, 197, 99);
+            color: white;
+        }
+
+        @media (max-width: 900px) {
+            body {
+                padding: 20px;
+                height: auto;
+                overflow-y: auto;
+            }
+
+            .container {
+                padding: 20px;
+                width: 100%;
+                box-sizing: border-box;
+                border-radius: 15px;
+            }
+
+            .friend-image {
+                max-height: 200px;
+                border-radius: 10px;
+            }
+
+            .letter h1 {
+                font-size: 1.5rem;
+            }
+
+            .letter p {
+                font-size: 0.95rem;
+            }
+
+            .signature {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="letter-box">
+            <img src="./assets/zza.jpg" alt="A memory together" class="friend-image" />
+            <div class="letter">
+                <h1>To Our Strong Independent Friend,</h1>
+                <p>
+                    Life wasn't easy to begin with. It's difficult and painful.<br>
+                    But it is made easier with the people around you.<br>
+                    We know how strong you are. How reliable you are.<br>
+                    You are like a leash that binds us together. The balance the keeps us stable.<br>
+                    Tears may fell, and fear might grow.<br>
+                    You may be like our leash, but we would also be the hands that hold it.<br>
+                    If you ever feel like breaking down, just know that we are here to hold you up.<br>
+                    We would be the hands to keep your scale stable, like you did with ours.<br>
+                    Thank you for being our confidant, for being strong, and for being reliable.<br>
+                    God knows how much we care for you.<br>
+                    I'm lucky to have you two as my friends in life🩵
+                </p>
+                <p class="signature">With love,<br>Leslie</p>
+            </div>
+        </div>
+    </div>
+    <div class="menu">
+        <a href="./index.html" id="logout">Log Out</a>
+        <a href="./quiz.html" id="quiz">Take Quiz</a>
+    </div>
+</body>
+
+</html>

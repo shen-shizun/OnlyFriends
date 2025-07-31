@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OnlyFriends</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Poppins', sans-serif;
+            background-image: url(./assets/loginBG.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .quiz-container {
+            background: #fff8fb;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2);
+            max-width: 500px;
+            width: 80%;
+            text-align: center;
+        }
+
+        .quiz-container h2 {
+            color: #7fd16b;
+            margin-bottom: 20px;
+        }
+
+        .question {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .answers {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .answers button {
+            background-color: #7fd16b;
+            border: none;
+            border-radius: 15px;
+            padding: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .answers button:hover {
+            background-color: #7fd16b;
+        }
+
+        .result {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            color: #6bc5d1;
+        }
+
+        .menu {
+            margin-top: 30px;
+        }
+
+        .menu a {
+            background-color: #fff8fb;
+            border-radius: 20px;
+            padding: 10px 20px;
+            color: #7fd16b;
+            text-decoration: none;
+            margin: 5px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .menu a:hover {
+            background-color: #7fd16b;
+            color: #fff8fb;
+        }
+
+        @media (max-width: 900px) {
+            body {
+                background-image: url('./assets/loginBG2.jpg');
+                background-position: center 40%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="quiz-container">
+        <h2>PPG QUIZ 💖</h2>
+        <div id="quiz">
+            <div class="question" id="question"></div>
+            <div class="answers" id="answers"></div>
+        </div>
+        <div class="result" id="result"></div>
+    </div>
+    <div class="menu">
+        <a href="./index.html">Log Out</a>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                question: "When did we start being friends?",
+                options: ["March 6, 2018", "September 14, 2018", "March 30, 2018", "Di ko alam"],
+                answer: "Di ko alam"
+            },
+            {
+                question: "🩷's birthday?",
+                options: ["February 11", "February 6", "February 9", "February 19"],
+                answer: "February 19"
+            },
+            {
+                question: "🩵's birthday?",
+                options: ["March 24", "March 11", "March 6", "March 19"],
+                answer: "March 11"
+            },
+            {
+                question: "💚's birthday?",
+                options: ["October 9", "October 5", "October 6", "October 11"],
+                answer: "October 6"
+            },
+            {
+                question: "Who is 🩷's white moonlight?",
+                options: ["Z", "M", "W", "L"],
+                answer: "W"
+            },
+            {
+                question: "🩵's black history.",
+                options: ["Mark", "Kent", "Willy", "Kurt"],
+                answer: "Willy"
+            },
+            {
+                question: "Who's loves to watch anime?",
+                options: ["🩵", "🩷", "💚"],
+                answer: "💚"
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        const questionEl = document.getElementById("question");
+        const answersEl = document.getElementById("answers");
+        const resultEl = document.getElementById("result");
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function loadQuestion() {
+            const q = quizData[currentQuestion];
+            questionEl.textContent = q.question;
+            answersEl.innerHTML = "";
+
+            q.options.forEach(option => {
+                const btn = document.createElement("button");
+                btn.textContent = option;
+                btn.onclick = () => checkAnswer(option);
+                answersEl.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selected) {
+            const correct = quizData[currentQuestion].answer;
+            if (selected === correct) {
+                score++;
+            }
+            currentQuestion++;
+            if (currentQuestion < quizData.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById("quiz").style.display = "none";
+            resultEl.textContent = `You got ${score} out of ${quizData.length} correct! 🎉`;
+        }
+
+        shuffle(quizData);
+        loadQuestion();
+
+    </script>
+</body>
+
+</html>
